@@ -1,0 +1,15 @@
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+@import "custom/variables";
+@import "user-variables";
+@import "bootstrap/bootstrap";
+@import "custom/components";
+@import "user";
+
+body {
+    background-color: $gray-100;
+  }
+
+  .bg-gradient {
+    background: linear-gradient(135deg, $electric-blue 0%, $blue 100%);
+  }

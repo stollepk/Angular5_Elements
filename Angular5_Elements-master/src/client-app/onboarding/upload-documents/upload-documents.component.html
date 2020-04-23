@@ -1,0 +1,73 @@
+<div id="fifth">
+    <div class="mb-4">
+        <h5>Upload Documents</h5>
+
+        <p>Submit proof of identity and address to trade on exchange.</p>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <div class="card">
+                <div class="card-header">Photo ID</div>
+
+                <div class="card-body"><span class="text-success">Permitted</span>
+
+                    <ul class="text-success">
+                        <li>Passport</li>
+                    </ul>
+                    <span class="text-red">Not Permitted</span>
+
+                    <ul class="text-red">
+                        <li>Driver's License</li>
+                        <li>Student ID</li>
+                        <li>Identity Card</li>
+                    </ul>
+                </div>
+
+                <div class="card-footer" *ngIf="!hasPassport">
+                    <button class="btn btn-primary" (click)="passportInput.click()"><i class="icon-upload-to-cloud">&nbsp;</i>Open File</button>
+                    <input hidden type="file" #passportInput (change)="getPassportFromFile($event)" accept="application/pdf, image/png, image/jpeg" />
+                    <button class="btn btn-primary" [disabled]="!(passport && passport.base64)" (click)="uploadDocument(passport)"><i class="icon-upload-to-cloud">&nbsp;</i>Start Uploading</button>
+                  <div class="progress" *ngIf="isUploadingPhotoId">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated"></div>
+                  </div>
+                </div>
+              <div class="card-footer" *ngIf="hasPassport">
+                <span class="text-success upload-success"><i class="fa fa-check-circle"></i> Photo ID uploaded!</span>
+              </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6">
+            <div class="card">
+                <div class="card-header">Proof of Address</div>
+
+                <div class="card-body"><span class="text-success">Permitted</span>
+
+                    <ul class="text-success">
+                        <li>Full Page Scan of Utility Bill
+                            <br /><i><small>(e.g. gas, water, or electricity)</small></i></li>
+                        <li>Bank Statement</li>
+                        <li>Cellphone Bill</li>
+                        <li>Internet Bill</li>
+                    </ul>
+                </div>
+
+                <div class="card-footer" *ngIf="!hasAddressProof">
+                    <button class="btn btn-primary" (click)="addressProofInput.click()"><i class="icon-upload-to-cloud">&nbsp;</i>Open File</button>
+                    <input hidden type="file" #addressProofInput (change)="getAddressProof($event)" accept="application/pdf, image/png, image/jpeg" />
+                    <button class="btn btn-primary" [disabled]="!(addressProof && addressProof.base64)" (click)="uploadDocument(addressProof)"><i class="icon-upload-to-cloud">&nbsp;</i>Start Uploading</button>
+                  <div class="progress" *ngIf="isUploadingFile">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated"></div>
+                  </div>
+                </div>
+              <div class="card-footer" *ngIf="hasAddressProof">
+                <span class="text-success upload-success"><i class="fa fa-check-circle"></i> Proof of Address uploaded!</span>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-block btn-lg btn-primary" (click)="onStartCheck()" [disabled]="!(hasPassport && hasAddressProof)">Submit for Review</button>
+    <button class="btn btn-block btn-lg btn-secondary" (click)="onStartCheck()">Do This Later</button>
+</div>

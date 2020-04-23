@@ -1,0 +1,154 @@
+<app-header></app-header>
+<section class="bg-white space-sm pb-4">
+    <div class="container">
+        <div class="row justify-content-between align-items-center">
+            <div class="col">
+                <h1 class="h2">Review Fiat Deposit</h1>
+            </div>
+            <!--end of col-->
+        </div>
+        <!--end of row-->
+    </div>
+</section>
+
+<section *ngIf="order">
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col text-center">
+                        <span>Client ID</span>
+                        <span class="h5">
+                            <a href="#">{{order.clientId}}</a>
+                        </span>
+                    </div>
+                    <div class="col text-center">
+                        <span>Reference Number</span>
+                        <span class="h5">{{order.orderReference}}</span>
+                    </div>
+                    <div class="col text-center">
+                        <span>Expected Amount</span>
+                        <span class="h5">{{order.amount}} USD</span>
+                    </div>
+                    <div class="col text-center">
+                        <span>Received Amount</span>
+                        <span class="h5">0.00 USD</span>
+                    </div>
+                    <div class="col text-center">
+                        <span>Status</span>
+                        <span class="h5">
+                            <span class="badge" [ngClass]="statusBadgeClass">{{ClientOrderStatus[order.status]}}</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-5">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <div>
+                            <span class="h6">From Account</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <dl class="row">
+                            <dt class="col-4">Bank Name</dt>
+                            <dd class="col-8">Hang Seng Bank</dd>
+                            <dt class="col-4">Bank Address</dt>
+                            <dd class="col-8">385 Bourke Street, Melbourne,
+                                <br />Victoria, 3000 Australia</dd>
+                            <dt class="col-4">Account Holder</dt>
+                            <dd class="col-8">Chimaera Capital Limited</dd>
+                            <dt class="col-4">Account Number</dt>
+                            <dd class="col-8">06200015709879 (USD)</dd>
+                            <dt class="col-4">SWIFT Code</dt>
+                            <dd class="col-8">CTBAAU2S</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2 text-center d-flex justify-content-center">
+                <img src="assets/img/icons8-chevron-right.svg" class="mb-2" alt="" />
+            </div>
+            <div class="col-5">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <div>
+                            <span class="h6">To Account</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <dl class="row">
+                            <dt class="col-4">Bank Name</dt>
+                            <dd class="col-8">Commonwealth Bank of Australia</dd>
+                            <dt class="col-4">Bank Address</dt>
+                            <dd class="col-8">385 Bourke Street, Melbourne,
+                                <br />Victoria, 3000 Australia</dd>
+                            <dt class="col-4">Account Name</dt>
+                            <dd class="col-8">Chimaera Capital Limited</dd>
+                            <dt class="col-4">Account Number</dt>
+                            <dd class="col-8">06200015709879 (USD)</dd>
+                            <dt class="col-4">SWIFT Code</dt>
+                            <dd class="col-8">CTBAAU2S</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <!--end of col-->
+        </div>
+        <div class="row">
+
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <div>
+                            <span class="h6">Reconciliation Report</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="card-body">
+                                <dl class="row">
+                                    <dt class="col-6">Name Match</dt>
+                                    <dd class="col-5">98.4%</dd>
+                                    <dd class="col-1">
+                                        <span class="badge badge-indicator badge-success mr-1">&nbsp;</span>
+                                    </dd>
+                                    <dt class="col-6">Reference Match</dt>
+                                    <dd class="col-5">Yes</dd>
+                                    <dd class="col-1">
+                                        <span class="badge badge-indicator badge-success mr-1">&nbsp;</span>
+                                    </dd>
+                                    <dt class="col-6">Account Match</dt>
+                                    <dd class="col-5">Yes</dd>
+                                    <dd class="col-1">
+                                        <span class="badge badge-indicator badge-success mr-1">&nbsp;</span>
+                                    </dd>
+                                    <dt class="col-6">Amount Received</dt>
+                                    <dd class="col-6">9,984.22</dd>
+                                    <dt class="col-6">Currency</dt>
+                                    <dd class="col-6">USD</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="col-6 border-left">
+                            <div class="card-body">
+                                <dl class="row">
+                                    <dt class="col-6">Order Date</dt>
+                                    <dd class="col-6">13 April, 2018 09:10</dd>
+                                    <dt class="col-6">Date Received</dt>
+                                    <dd class="col-6">14 April, 2018 13:10</dd>
+                                    <dt class="col-6">Value Date</dt>
+                                    <dd class="col-6">13 April, 2018 17:00</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,21 @@
+mat-horizontal-stepper {
+    .mat-horizontal-stepper-header-container {
+        margin-bottom: 30px !important;
+    }
+    mat-step {
+        .mat-step-label {
+            min-width: 0px !important;
+        }
+    }
+}
+
+.mat-horizontal-stepper-header .mat-step-icon,
+.mat-horizontal-stepper-header .mat-step-icon-not-touched {
+    flex: none;
+    width: 2.25rem !important;
+    height: 2.25rem !important;
+    line-height: 2.25rem !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    margin-right: 0px !important;
+}

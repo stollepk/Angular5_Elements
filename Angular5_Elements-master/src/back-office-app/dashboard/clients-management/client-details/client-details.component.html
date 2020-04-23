@@ -1,0 +1,212 @@
+<app-header></app-header>
+<div class="main-container">
+  <section class="bg-white space-sm pb-4">
+    <div class="container">
+      <div class="row justify-content-between align-items-center">
+        <div class="col">
+          <h1 class="h2">Compliance Review</h1>
+        </div>
+        <div class="col-auto">
+          <button class="btn btn-outline-primary" data-toggle="modal" data-target="#modal-remark"><i class="icon-message mr-1"></i> Add a Remark</button>
+          <button class="btn btn-outline-primary" data-toggle="modal" data-target="#modal-escalate"><i class="icon-arrow-up mr-1"></i> Escalate</button>
+          <button class="btn btn-success" data-toggle="modal" data-target="#modal-approve"><i class="icon-thumbs-up mr-1"></i> Approve</button>
+        </div>
+        <!--end of col-->
+      </div>
+      <!--end of row-->
+    </div>
+
+    <!-- Escalate -->
+    <div class="modal fade" id="modal-escalate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Escalate Case</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Reason / Note to Supervisor</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-success">Escalate</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Remark -->
+    <div class="modal fade" id="modal-remark" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add a Permanent to Client File</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Enter Your Comment</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-success">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Remark -->
+    <div class="modal fade" id="modal-approve" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body text-center">
+            <span>Are you sure you want to approve the Client?</span>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            <button type="button" class="btn btn-success" data-dismiss="modal" (click)="approve()">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--end of container-->
+  </section>
+
+  <section class="">
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <div class="card" *ngIf="client && client.personalParticulars">
+            <div class="card-header d-flex justify-content-between">
+              <div>
+                <span class="h6">Personal Particulars</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <dl class="row">
+                <dt class="col-4">First Name(s)</dt>
+                <dd class="col-8">
+                  {{client.personalParticulars.firstName}}
+                  {{client.personalParticulars.middleName}}
+                </dd>
+                <dt class="col-4">Last Name</dt>
+                <dd class="col-8">{{client.personalParticulars.lastName}}</dd>
+                <dt class="col-4">Date of Birth</dt>
+                <dd class="col-8">{{client.personalParticulars.birthday | date:"dd/MM/yyyy"}}</dd>
+                <dt class="col-4">Gender</dt>
+                <dd class="col-8">{{client.personalParticulars.gender}}</dd>
+                <dt class="col-4">Place of Birth</dt>
+                <dd class="col-8">{{getCountryNameById(client.personalParticulars.placeOfBirthCountryId)}}</dd>
+                <dt class="col-4">Country of Residency</dt>
+                <dd class="col-8">{{getCountryNameById(client.personalParticulars.citizenshipCountryId)}}</dd>
+              </dl>
+              <div *ngIf="client.photoId">
+                <hr class="mb-3">
+                <app-attachment [model]="client.photoId"></app-attachment>
+              </div>
+            </div>
+          </div>
+          <div class="card" *ngIf="client && client.residentialAddress">
+            <div class="card-header d-flex justify-content-between">
+              <div>
+                <span class="h6">Residential Address</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <dl class="row">
+                <dt class="col-4">Street Address 1</dt>
+                <dd class="col-8">{{client.residentialAddress.line1}}</dd>
+                <dt class="col-4">Street Address 2</dt>
+                <dd class="col-8">{{client.residentialAddress.line2}}</dd>
+                <dt class="col-4">City/Town</dt>
+                <dd class="col-8">{{client.residentialAddress.city}}</dd>
+                <dt class="col-4">Province/Region</dt>
+                <dd class="col-8">{{client.residentialAddress.stateProvidence}}</dd>
+                <dt class="col-4">Zip/Post Code</dt>
+                <dd class="col-8">{{client.residentialAddress.postalCode}}</dd>
+                <dt class="col-4">Country</dt>
+                <dd class="col-8">{{getCountryNameById(client.residentialAddress.countryId)}}</dd>
+              </dl>
+              <div *ngIf="client.bill">
+                <hr class="mb-3">
+                <app-attachment [model]="client.bill"></app-attachment>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="card" *ngIf="client">
+            <div class="card-header d-flex justify-content-between">
+              <div>
+                <span class="h6">Onfido</span>
+              </div>
+              <a href="#">View Report ›</a>
+            </div>
+            <div class="card-body">
+              <dl class="row">
+                <dt class="col-4">Document Report</dt>
+                <dd class="col-8"><span class="badge badge-success">Pass</span></dd>
+                <dt class="col-4">Watchlist Report</dt>
+                <dd class="col-8"><span class="badge badge-success">Pass</span></dd>
+                <dt class="col-4">Identity Report (KYC)</dt>
+                <dd class="col-8"><span class="badge badge-warning">Consider</span></dd>
+              </dl>
+            </div>
+          </div>
+          <div class="card" *ngIf="client">
+            <div class="card-header d-flex justify-content-between">
+              <div>
+                <span class="h6">Contact Details</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <dl class="row">
+                <dt class="col-4">Email</dt>
+                <dd class="col-7">{{client.email}}</dd>
+                <dd class="col-1"><span class="badge badge-indicator badge-success mr-1">&nbsp;</span></dd>
+                <dt class="col-4">Phone Number</dt>
+                <dd class="col-7">{{client.phone}}</dd>
+                <dd class="col-1"><span class="badge badge-indicator badge-success mr-1">&nbsp;</span></dd>
+              </dl>
+            </div>
+          </div>
+          <div class="card" *ngIf="client && client.mainBankAccount">
+            <div class="card-header d-flex justify-content-between">
+              <div>
+                <span class="h6">Bank Account</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <dl class="row">
+                <dt class="col-4">Account Holder Name</dt>
+                <dd class="col-8">{{client.mainBankAccount.accountHolder}}</dd>
+                <dt class="col-4">Bank Name</dt>
+                <dd class="col-8">{{client.mainBankAccount.bankName}}</dd>
+                <dt class="col-4">Swift Code</dt>
+                <dd class="col-8">{{client.mainBankAccount.swiftCode}}</dd>
+                <dt class="col-4">Country</dt>
+                <dd class="col-8">{{getCountryNameById(client.mainBankAccount.countryId)}}</dd>
+                <dt class="col-4">Account Number</dt>
+                <dd class="col-8">{{client.mainBankAccount.accountNumber}}</dd>
+              </dl>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-6">
+
+          <!--end of col-->
+        </div>
+      </div>
+    </div>
+  </section></div>

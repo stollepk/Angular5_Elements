@@ -1,0 +1,140 @@
+<div class="tab-pane fade show active" id="bank-transfer" role="tabpanel" aria-labelledby="bank-transfer">
+  <div class="container">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between">
+        <div><span class="h6">Deposit Fiat by Bank Transfer</span></div>
+        <a routerLink="/settings/bank-accounts">Manage Bank Accounts ›</a></div>
+
+      <div class="card-body" [formGroup]="form">
+        <div class="row">
+          <div class="col-6 d-none d-md-block"></div>
+
+          <div class="col">
+            <div class="mb-4">
+              <p>Wire deposits will require you to contact your approved bank on file, and have funds sent to Elements. Please fill out the form above to get the necessary instructions on the wire transfer.</p>
+            </div>
+
+            <div class="form-group">
+              <label class="">Funding Source</label>
+
+              <select class="custom-select form-control-lg" formControlName="clientBankAccountId">
+                <option *ngFor="let acc of accounts$ | async"
+                        [value]="acc.id">
+                  {{acc.name}}
+                </option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col">
+                <label for="price" class="sr-only">Amount</label>
+
+                <div class="input-group">
+                  <input class="form-control form-control-lg"
+                         type="number"
+                         name="price"
+                         id="price"
+                         formControlName="amount"
+                         placeholder="0.00">
+
+                  <div class="input-group-append"><span class="input-group-text">USD</span></div>
+                </div>
+              </div>
+
+              <div class="form-group col">
+                <button class="btn btn-primary btn-lg btn-block"
+                        [disabled]="form.invalid"
+                        (click)="createOrder(orderDataModal)">
+                  Initiate Transfer
+                </button>
+              </div>
+            </div>
+
+            <div class="alert alert-warning" role="alert">Bank transfer must originate from the selected bank account above. Funds sent form unapproved or third-party accounts will be rejected.</div>
+          </div>
+        </div>
+
+        <!-- Modal -->
+        <ng-template #orderDataModal let-d="dismiss">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Please Send Your Funds Now</h5>
+
+            <button type="button" class="close" (click)="d()"><span aria-hidden="true">×</span></button>
+          </div>
+
+          <div class="modal-body">
+            <p>The information below will be necessary for a wire transfer into Elements. To proceed:</p>
+            <dl class="row">
+              <dt class="col-4">Bank Name</dt>
+              <dd class="col-8">Commonwealth Bank of Australia</dd>
+              <dt class="col-4">Bank Address</dt>
+              <dd class="col-8">385 Bourke Street, Melbourne,<br>Victoria, 3000 Australia</dd>
+              <dt class="col-4">Account Name</dt>
+              <dd class="col-8">Chimaera Capital Limited</dd>
+              <dt class="col-4">Account Number</dt>
+              <dd class="col-8">06200015709879 (USD)</dd>
+              <dt class="col-4">SWIFT Code</dt>
+              <dd class="col-8">CTBAAU2S</dd>
+              <dt class="col-4">Amount</dt>
+              <dd class="col-8">US${{form.get("amount").value}}</dd>
+              <dt class="col-4">Reference Nr.</dt>
+              <dd class="col-8 text-red">{{reference}}</dd>
+            </dl>
+
+            <div class="alert alert-warning" role="alert">
+              <strong>Attention!</strong>
+              You <strong>MUST</strong> write <strong>{{reference}}</strong> in the <i>memo</i>
+              or <i>instructions</i> field of the wire transfer in order for funds to reach your Elements account.</div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+
+    <h3>Inward Payment Advices</h3>
+
+    <hr class="short">
+
+    <table class="table table-hover align-items-center table-borderless table-responsive-sm">
+      <thead>
+      <tr>
+        <th scope="col">Reference Number</th>
+        <th scope="col">From Bank Account</th>
+        <th>Amount</th>
+        <th scope="col">Date Created</th>
+        <th scope="col" class="">Status</th>
+        <th></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <ng-template ngFor let-order [ngForOf]="orders$ | async">
+        <tr class="bg-white">
+          <th>{{order.reference}}</th>
+
+          <td>{{order.bankAccountName}}</td>
+
+          <td>US${{order.amount | number:"1.2-2"}}</td>
+
+          <td>{{order.createdDate | date:"dd-MMMM-yyyy hh:mm"}}</td>
+
+          <td><span class="badge badge-info badge-pill">{{orderStatuses[order.status]}}</span></td>
+
+          <td class="text-center">
+            <div class="dropdown">
+              <button class="btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow" type="button" id="dropdownMenuButton-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-dots-three-horizontal"></i></button>
+
+              <div class="dropdown-menu dropdown-menu-sm" aria-labelledby="dropdownMenuButton"><a class="dropdown-item" href="#">View Instructions</a>
+                <a class="dropdown-item" href="#">Upload Payment Slip</a>
+
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Report a Problem</a></div>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="table-divider"></tr>
+      </ng-template>
+      </tbody>
+    </table>
+  </div>
+</div>

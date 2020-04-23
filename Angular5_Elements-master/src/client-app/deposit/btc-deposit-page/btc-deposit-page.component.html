@@ -1,0 +1,74 @@
+<div class="tab-pane fade active show" id="bitcoin" role="tabpanel" aria-labelledby="bitcoin">
+  <div class="container">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between">
+        <div><span class="h6">Deposit Bitcoin</span></div>
+      </div>
+
+      <div class="card-body">
+        <div class="row">
+          <div class="col-6 d-none d-md-block"></div>
+
+          <div class="col">
+            <div *ngIf="!lastAddress" class="form-group">
+              <p>It seems like you don't have Bitcoin address.<br/>Click below to generate a new unique address.</p>
+            </div>
+            <div *ngIf="lastAddress" class="form-row">
+              <div class="form-group col">
+                <qrcode [qrdata]="lastAddress"></qrcode>
+              </div>
+              <div class="form-group col">
+                <label class="">Most recent address</label>
+                <input class="form-control form-control-lg" type="text" [value]="lastAddress" readonly/>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <button class="btn btn-primary btn-lg btn-block" [disabled]="isQuerying" (click)="generateAddress()">
+                Generate address
+              </button>
+            </div>
+
+            <div class="alert alert-warning" role="alert">
+              Coins will be deposited immediately after 6 network confirmations.<br/>
+              After making a deposit, you can track its progress on the transactions page.<br/>
+              Minimum deposit amount 0.0001 BTC.<br/>
+              <strong>Warning!</strong> Please do not not mine directly to your Elements DAX address.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Bitcoin Deposit Addresses</h3>
+
+    <hr class="short">
+
+    <table class="table table-hover align-items-center table-borderless">
+      <thead>
+      <tr>
+        <th scope="col">Address</th>
+
+        <th scope="col">Nickname</th>
+
+        <th scope="col" colspan="2">Date Created</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <ng-template ngFor let-model [ngForOf]="addresses$ | async">
+        <tr class="bg-white">
+          <th>{{model.address}}</th>
+
+          <td>{{model.label || "-"}}</td>
+
+          <td>{{model.createdDate | date:"dd-MMMM-yyyy hh:mm"}}</td>
+        </tr>
+
+        <tr class="table-divider"></tr>
+      </ng-template>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 40 40" version="1.1" width="64px" height="64px">
+<g id="surface1">
+<path style=" fill:#DFF0FE;" d="M 4 37.5 C 2.621094 37.5 1.5 36.378906 1.5 35 L 1.5 4 C 1.5 2.621094 2.621094 1.5 4 1.5 L 35 1.5 C 36.378906 1.5 37.5 2.621094 37.5 4 L 37.5 35 C 37.5 36.378906 36.378906 37.5 35 37.5 Z "/>
+<path style=" fill:#4788C7;" d="M 35 2 C 36.101563 2 37 2.898438 37 4 L 37 35 C 37 36.101563 36.101563 37 35 37 L 4 37 C 2.898438 37 2 36.101563 2 35 L 2 4 C 2 2.898438 2.898438 2 4 2 L 35 2 M 35 1 L 4 1 C 2.34375 1 1 2.34375 1 4 L 1 35 C 1 36.65625 2.34375 38 4 38 L 35 38 C 36.65625 38 38 36.65625 38 35 L 38 4 C 38 2.34375 36.65625 1 35 1 Z "/>
+<path style=" fill:#B6DCFE;" d="M 5 2 L 6 2 L 6 37 L 5 37 Z "/>
+<path style=" fill:#B6DCFE;" d="M 12 2 L 13 2 L 13 37 L 12 37 Z "/>
+<path style=" fill:#B6DCFE;" d="M 19 2 L 20 2 L 20 37 L 19 37 Z "/>
+<path style=" fill:#B6DCFE;" d="M 26 2 L 27 2 L 27 37 L 26 37 Z "/>
+<path style=" fill:#B6DCFE;" d="M 33 2 L 34 2 L 34 37 L 33 37 Z "/>
+<path style=" fill:#B6DCFE;" d="M 2 5 L 37 5 L 37 6 L 2 6 Z "/>
+<path style=" fill:#B6DCFE;" d="M 2 12 L 37 12 L 37 13 L 2 13 Z "/>
+<path style=" fill:#B6DCFE;" d="M 2 19 L 37 19 L 37 20 L 2 20 Z "/>
+<path style=" fill:#B6DCFE;" d="M 2 26 L 37 26 L 37 27 L 2 27 Z "/>
+<path style=" fill:#B6DCFE;" d="M 2 33 L 37 33 L 37 34 L 2 34 Z "/>
+<path style="fill:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke:#4788C7;stroke-opacity:1;stroke-miterlimit:10;" d="M 2 33.5 L 5 33.5 L 7.5 17.996094 L 10 33.5 L 13 33.5 L 15.5 11 L 18 33.5 L 21 33.5 L 23.5 16 L 26 33.5 L 29 33.5 L 31.5 22.5 L 34 33.5 L 37 33.5 "/>
+</g>
+</svg>

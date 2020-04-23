@@ -1,0 +1,28 @@
+<div class="card-body">
+  <div class="mb-3">
+      <h2 class="mb-2">Login to Your Account</h2>
+      <span>Welcome back, sign in with your existing account credentials.</span>
+  </div>
+
+  <div class="row no-gutters justify-content-center mb-2">
+      <div class="text-left col-lg-11" [formGroup]="form">
+          <div class="form-group">
+              <label for="login-email" class="sr-only">Email Address</label>
+              <input class="form-control form-control-lg" type="email" autofocus="" id="login-email" placeholder="Email Address" formControlName="email">
+          </div>
+
+          <div class="form-group">
+              <label for="login-password" class="sr-only">Password</label>
+              <input class="form-control form-control-lg" type="password" id="login-password" placeholder="Enter a password" formControlName="password">
+          </div>
+
+          <div class="text-center">
+              <button class="btn btn-lg btn-block btn-primary" [disabled]="form.invalid" (click)="login()">Log in</button>
+          </div>
+      </div>
+  </div>
+
+  <small class="type--fine-print block">Don't have an account yet? <a routerLink="/auth/register">Create an Account</a></small><br/>
+
+  <!-- <small>Forgot you password? <a routerLink="/auth/recover-password">Reset It Here</a></small> -->
+</div>

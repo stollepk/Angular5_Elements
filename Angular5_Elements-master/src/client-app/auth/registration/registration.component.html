@@ -1,0 +1,51 @@
+<div class="card-body">
+    <div class="mb-3">
+        <h4 class="mb-2">Create Your Login</h4>
+        <span>We’re so glad you’re ready to join Elements. This should only take a couple minutes. Let’s start by creating your account login.</span>
+    </div>
+    <div class="row no-gutters justify-content-center mb-2">
+        <div class="text-left col-lg-11" [formGroup]="form">
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="first-name" class="sr-only">First Name</label>
+
+                    <input type="text" class="form-control form-control-lg" id="first-name" autofocus="" placeholder="First Name" formControlName="firstName" />
+                </div>
+                <div class="form-group col">
+                    <label for="last-name" class="sr-only">Last Name</label>
+
+                    <input type="text" class="form-control form-control-lg" id="last-name" placeholder="Last Name" formControlName="lastName" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="sr-only">Email</label>
+
+                <input type="email" class="form-control form-control-lg" id="email" placeholder="Email" formControlName="email" />
+            </div>
+            <div class="form-group">
+                <label for="password" class="sr-only">Choose a Password</label>
+
+                <div class="input-group">
+                  <show-hide-password size="lg" icon="fontawesome">
+                    <input type="password" class="form-control form-control-lg" id="password" placeholder="Choose a Password" formControlName="password" />
+                  </show-hide-password>
+
+                    <!--<div class="input-group-append" id="show_hide_password">-->
+                        <!--<div class="input-group-text">Show</div>-->
+                    <!--</div>-->
+                </div>
+            </div>
+
+            <div class="form-group custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="agree-tnc" formControlName="isAgreeWithTerms">
+
+                <label class="custom-control-label text-small" for="agree-tnc">I certify that I am 18 years of age or older, and I agree to the <a href="terms.html">Terms of Service</a> and <a href="privacy-policy.html">Privacy Policy</a>.</label>
+            </div>
+
+            <button class="btn btn-primary btn-lg btn-block" (click)="submit()" [disabled]="form.invalid">Register</button>
+        </div>
+    </div>
+    <small class="type--fine-print block">Already have an account? <a routerLink="/auth/login">Sign In</a> </small>
+    <!--end of row-->
+</div>

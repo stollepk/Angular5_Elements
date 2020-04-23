@@ -1,0 +1,80 @@
+<app-header></app-header>
+<section class="bg-white space-sm pb-4">
+    <div class="container">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-auto">
+                <h1 class="h2">Fiat Deposits</h1>
+            </div>
+            <!--end of col-->
+        </div>
+        <!--end of row-->
+    </div>
+    <!--end of container-->
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <span class="text-muted text-small">Results 1 - {{orders.length}} of {{orders.length}}</span>
+                    </div>
+                    <form class="d-flex align-items-center">
+                        <span class="mr-2 text-muted text-small text-nowrap">Sort by:</span>
+                        <select class="custom-select" (change)="sortingChanged($event.target.value)">
+                            <option value="newest-first" selected="">Newest</option>
+                            <option value="oldest-first">Oldest</option>
+                            <option value="status">Status</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+            <!--end of col-->
+        </div>
+        <table class="table table-hover align-items-center table-borderless">
+            <thead>
+                <tr>
+                    <th scope="col">User ID</th>
+                    <th scope="col">Date Created</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Reference Nr.</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <ng-container *ngFor="let order of orders">
+                    <tr class="bg-white">
+                        <th>
+                            <a href="#">{{order.clientId}}</a>
+                        </th>
+                        <td>{{order.createdDate | date: 'short'}}</td>
+                        <td>{{order.amount}}</td>
+                        <td>{{order.orderReference}}</td>
+                        <td>
+                            <span class="badge badge-pill" [ngClass]="getStatusBadgeClass(order.status)">{{ClientOrderStatus[order.status]}}</span>
+                        </td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow" type="button" id="dropdownMenuButton-1"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="icon-dots-three-horizontal"></i>
+                                </button>
+
+                                <div class="dropdown-menu dropdown-menu-sm" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" [routerLink]="['/deposits', order.id]">View Details</a>
+
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Contact Client</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="table-divider"></tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
+</section>

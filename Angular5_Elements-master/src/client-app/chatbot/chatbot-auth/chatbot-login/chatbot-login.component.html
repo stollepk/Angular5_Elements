@@ -1,0 +1,23 @@
+<div class="card-body">
+  <div class="mb-4">
+    <h2 class="mb-2">Login to Chatbot</h2>
+  </div>
+  <div class="row no-gutters justify-content-center">
+    <div class="text-left col-lg-8" [formGroup]="form">
+      <div class="form-group">
+        <label for="login-email" class="sr-only">Email Address</label>
+        <input class="form-control form-control-lg" type="email" autofocus="" id="login-email" placeholder="Email Address" formControlName="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="login-password" class="sr-only">Password</label>
+        <input class="form-control form-control-lg" type="password" id="login-password" placeholder="Enter a password" formControlName="password" required>
+      </div>
+      <div class="alert-warning alert" [hidden]="!errorMessage">{{errorMessage}}</div>
+      <div class="text-center mt-3">
+        <button class="btn btn-lg btn-block btn-primary" [disabled]="form.invalid" (click)="login()">Log in</button>
+      </div>
+    </div>
+  </div>
+  <!--end of row-->
+</div>

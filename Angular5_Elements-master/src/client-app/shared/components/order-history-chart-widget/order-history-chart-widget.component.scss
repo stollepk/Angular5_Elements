@@ -1,0 +1,28 @@
+.historical-widget-subpanel-row {
+    padding: 5px;
+    .historical-widget-subpanel-title {
+        color: #7b7878 !important;
+        width: 100%;
+        float: left;
+        font-size: 12px;
+    }
+    .historical-widget-subpanel-price {
+        color: #484646 !important;
+        font-weight: bold;
+        width: 100%;
+        font-size: 14px;
+    }
+    .historical-widget-subpanel-tool {
+        color: #484646 !important;
+        font-weight: bold;
+        width: 100%;
+        font-size: 14px;
+        mat-icon {
+            font-size: 19px !important;
+            float: left !important;
+        }
+    }
+    .history-chart-widget-last-col {
+        border-left: solid 1px #dddddd;
+    }
+}

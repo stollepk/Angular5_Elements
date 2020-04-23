@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" height="868px" width="1654px" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1654 868"><!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+ <title>Group 17</title>
+ <desc>Created with Sketch.</desc>
+ <defs>
+  <linearGradient id="linearGradient-1" y1="100%" x2="50%" x1="50%" y2="-2.4895e-15%">
+   <stop stop-color="#595FE2" offset="0"/>
+   <stop stop-color="#0017AA" offset="1"/>
+  </linearGradient>
+  <linearGradient id="linearGradient-2" y1="100%" x2="50%" x1="50%" y2="3.0616e-15%">
+   <stop stop-color="#67E9FF" offset="0"/>
+   <stop stop-color="#4795FF" offset="1"/>
+  </linearGradient>
+  <linearGradient id="linearGradient-3" y1="-2.4895e-15%" x2="50%" x1="50%" y2="100%">
+   <stop stop-color="#595FE2" offset="0"/>
+   <stop stop-color="#0017AA" offset="1"/>
+  </linearGradient>
+  <linearGradient id="linearGradient-4" y1="100%" x2="50%" x1="50%" y2="3.0616e-15%">
+   <stop stop-color="#67C4FF" offset="0"/>
+   <stop stop-color="#4794FF" offset="1"/>
+  </linearGradient>
+ </defs>
+ <g id="Page-1" fill-rule="evenodd" fill="none">
+  <g id="homepage_newcolor-enterprice-block">
+   <g id="Group-17" transform="translate(-106 -175)">
+    <path id="Rectangle-41-Copy-5" opacity=".25" fill="url(#linearGradient-1)" d="m516.4 332l443.39 105.41c80.61 19.16 144.91 101.84 143.61 184.67l-6.6 420.02-585.64-170.38 5.24-539.72z" transform="translate(807.28 687.04) scale(-1 1) translate(-807.28 -687.04)"/>
+    <path id="Rectangle-41-Copy-4" fill-opacity=".35" fill="url(#linearGradient-2)" d="m1499 0.39062l262 62.283-3.1 269.76-164.3-47.8c-53.1-15.43-95.8-72.71-95.5-127.92l0.9-156.32z" transform="translate(1629.5 166.41) scale(-1 1) translate(-1629.5 -166.41)"/>
+    <path id="Rectangle-41-Copy-6" opacity=".25" fill="url(#linearGradient-3)" d="m0 112l262 62.28-0.19 559.15-164.34-47.8c-53.034-15.43-96.146-72.71-96.292-127.94l-1.178-445.69z" transform="translate(131 422.71) scale(-1 1) translate(-131 -422.71)"/>
+    <path id="Rectangle-41-Copy-7" fill="url(#linearGradient-4)" d="m208 532l78.59 18.68c16.12 3.83 29.18 20.38 29.17 36.94l-0.06 144.93-78.3-22.78c-15.91-4.62-28.85-21.81-28.91-38.37l-0.49-139.4z" transform="translate(261.88 632.27) scale(-1 1) translate(-261.88 -632.27)"/>
+   </g>
+  </g>
+ </g>
+</svg>

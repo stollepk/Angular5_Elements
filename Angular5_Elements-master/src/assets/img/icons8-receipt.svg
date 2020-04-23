@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 40 40" version="1.1" width="64px" height="64px">
+<g id="surface1">
+<path style=" fill:#DFF0FE;" d="M 1.5 38.5 L 1.5 14 C 1.5 12.621094 2.621094 11.5 4 11.5 L 36 11.5 C 37.378906 11.5 38.5 12.621094 38.5 14 L 38.5 38.5 Z "/>
+<path style=" fill:#4788C7;" d="M 36 12 C 37.101563 12 38 12.898438 38 14 L 38 38 L 2 38 L 2 14 C 2 12.898438 2.898438 12 4 12 L 36 12 M 36 11 L 4 11 C 2.34375 11 1 12.34375 1 14 L 1 39 L 39 39 L 39 14 C 39 12.34375 37.65625 11 36 11 Z "/>
+<path style=" fill:#98CCFD;" d="M 6.5 22.5 L 33.5 22.5 L 33.5 26.5 L 6.5 26.5 Z "/>
+<path style=" fill:#98CCFD;" d="M 33 23 L 33 26 L 7 26 L 7 23 L 33 23 M 34 22 L 6 22 L 6 27 L 34 27 Z "/>
+<path style=" fill:#98CCFD;" d="M 6.5 31.5 L 9.5 31.5 L 9.5 34.5 L 6.5 34.5 Z "/>
+<path style=" fill:#98CCFD;" d="M 9 32 L 9 34 L 7 34 L 7 32 L 9 32 M 10 31 L 6 31 L 6 35 L 10 35 Z "/>
+<path style=" fill:#98CCFD;" d="M 12.5 31.5 L 15.5 31.5 L 15.5 34.5 L 12.5 34.5 Z "/>
+<path style=" fill:#98CCFD;" d="M 15 32 L 15 34 L 13 34 L 13 32 L 15 32 M 16 31 L 12 31 L 12 35 L 16 35 Z "/>
+<path style=" fill:#98CCFD;" d="M 18.5 31.5 L 21.5 31.5 L 21.5 34.5 L 18.5 34.5 Z "/>
+<path style=" fill:#98CCFD;" d="M 21 32 L 21 34 L 19 34 L 19 32 L 21 32 M 22 31 L 18 31 L 18 35 L 22 35 Z "/>
+<path style=" fill:#98CCFD;" d="M 24.5 31.5 L 27.5 31.5 L 27.5 34.5 L 24.5 34.5 Z "/>
+<path style=" fill:#98CCFD;" d="M 27 32 L 27 34 L 25 34 L 25 32 L 27 32 M 28 31 L 24 31 L 24 35 L 28 35 Z "/>
+<path style=" fill:#B6DCFE;" d="M 30.5 31.5 L 33.5 31.5 L 33.5 34.5 L 30.5 34.5 Z "/>
+<path style=" fill:#B6DCFE;" d="M 33 32 L 33 34 L 31 34 L 31 32 L 33 32 M 34 31 L 30 31 L 30 35 L 34 35 Z "/>
+<path style=" fill:#4788C7;" d="M 33 16 L 7 16 C 6.449219 16 6 16.449219 6 17 C 6 17.550781 6.449219 18 7 18 L 33 18 C 33.550781 18 34 17.550781 34 17 C 34 16.449219 33.550781 16 33 16 Z "/>
+<path style=" fill:#FFFFFF;" d="M 9.5 1.5 L 30.5 1.5 L 30.5 17.5 L 9.5 17.5 Z "/>
+<path style=" fill:#4788C7;" d="M 30 2 L 30 17 L 10 17 L 10 2 L 30 2 M 31 1 L 9 1 C 9 1.953125 9 18 9 18 L 31 18 C 31 18 31 1.953125 31 1 Z "/>
+<path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:#4788C7;stroke-opacity:1;stroke-miterlimit:10;" d="M 14.5 5.5 L 25.5 5.5 "/>
+<path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:#4788C7;stroke-opacity:1;stroke-miterlimit:10;" d="M 14.5 9.5 L 25.5 9.5 "/>
+</g>
+</svg>

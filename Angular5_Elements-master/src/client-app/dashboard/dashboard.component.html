@@ -1,0 +1,154 @@
+<app-header></app-header>
+<div class="main-container">
+  <section class="bg-gradient text-white">
+    <div class="container">
+      <div class="row justify-content-between align-items-center">
+        <div class="col-12 col-md-5">
+          <div class=" text-center text-md-left">
+            <h1 class="no-wrap">Hi again, {{clientName || "user"}}!</h1>
+            <!--<p>Complete your Profile. It's at 60%</p>-->
+          </div>
+        </div>
+        <!--end of col-->
+      </div>
+      <!--end of row-->
+    </div>
+    <!--end of container-->
+  </section>
+  <section>
+    <div class="container">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <div class="media align-items-center"><span class="h6">BTC/USD Historical Data</span></div>
+          <ul class="nav nav-pills card-header-pills">
+            <li class="nav-item"><a class="nav-link active" href="#">1HR</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">4HR</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">1D</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">1W</a></li>
+          </ul>
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-9">
+            <div class="card-body">
+              <div class="align-middle">
+                <div echarts [options]="chartOptions" theme="light"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-3 border-left">
+            <div class="card-body">
+              <div class="row text-center">
+                <div class="col-12 col-sm-6 col-md-12 my-2">
+                  <span class="title-decorative  m-0">Market Price</span>
+                  <small class="title-decorative text-dark">${{marketPrice | number:"1.2-2"}}</small>
+                </div>
+                <!--end of col-->
+                <div class="col-12 col-sm-6 col-md-12  my-2">
+                  <span class="title-decorative m-0">24hr Change</span>
+                  <small class="title-decorative" [class.text-red]="!isGrow" [class.text-green]="isGrow">
+                    <span class="stack-down-dir">{{isGrow ? '▲' : '▼'}}</span>
+                    ${{priceDiff}} ({{priceDiffPercentage}}%)
+                  </small>
+                  <!--end of col-->
+                  <div class="col-12 col-sm-6 col-md-12 my-2">
+                    <span class="title-decorative m-0">24hr Range</span>
+                    <small class="title-decorative text-dark">
+                      ${{dashboardData.priceDiff?.dayAgo | number:"1.2-2"}}-{{dashboardData.priceDiff?.now | number:"1.2-2"}}
+                    </small>
+                  </div>
+                  <!--end of col-->
+                  <div class="col-12 col-sm-6 col-md-12 my-2">
+                    <span class="title-decorative m-0">24hr Volume</span>
+                    <small class="title-decorative text-dark">${{volume | number:"1.2-2"}}</small>
+                  </div>
+                  <!--end of col-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 col-md-7">
+          <div class="card">
+            <div class="card-header d-flex justify-content-between">
+              <div><span class="h6">Transaction History</span></div>
+              <!--<a href="app_trx-history.html">View all ›</a>-->
+            </div>
+            <div *ngIf="transactions.length === 0" class="alert alert-warning" role="alert" style="text-align: center">
+              We didn't find any orders/transactions in the system.
+            </div>
+
+            <ul class="list-group list-group-flush">
+              <li *ngFor="let tx of transactions" class="list-group-item">
+                <div class="row">
+                  <div class="col-2">{{tx.transactionDate | date:"dd-MMMM"}}</div>
+                  <div class="col-3">{{txTypeEnum[tx.transactionType]}}</div>
+                  <div class="col" [class.text-red]="tx.balance < 0" [class.text-green]="tx.balance > 0">
+                    {{tx.balance}} {{tx.asset}}
+                  </div>
+                  <!--<div class="col-2 text-center"><span class="badge badge-warning badge-pill">{{tx.asset}}</span></div>-->
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-5">
+          <div class="card">
+            <div class="card-header d-flex justify-content-between">
+              <div><span class="h6">Deposits &amp; Withrawals</span></div>
+              <a href="#">View all ›</a>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="col">12 April</div>
+                  <div class="col text-right text-red">- 8,733 USD</div>
+                </div>
+              </li>
+
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="col">09 Feb</div>
+                  <div class="col text-right text-green">+ 24.33 BTC</div>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="col">01 April</div>
+                  <div class="col text-right text-red">- 0.04852695 BTC</div>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="col">22 Feb</div>
+                  <div class="col text-right text-green">+ 234.33 USD</div>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="col">22 Jan</div>
+                  <div class="col text-right text-green">+ 10,000.00 USD</div>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+
+          <div class="card card-borderless bg-secondary">
+            <a class="card-body" href="#">
+              <div class="d-flex justify-content-between mb-3"><span class="title-decorative">Meet Elly!</span></div>
+              <span class="h6">A robust suite of styled elements and pages</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- <app-balance-panel style="width: 100%; margin-bottom: 20px;"></app-balance-panel>
+<app-history-data style="width: 100%; margin-bottom: 20px;"></app-history-data>
+<app-user-orders style="width: 100%; margin-bottom: 20px;"></app-user-orders> -->

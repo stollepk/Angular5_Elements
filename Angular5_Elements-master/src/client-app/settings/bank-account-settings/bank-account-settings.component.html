@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row mb-4">
+    <div class="col">
+      <h5>Bank accounts</h5>
+    </div>
+    <!--end of col-->
+  </div>
+  <!--end of row-->
+  <div class="row">
+    <div class="col-12">
+      <form>
+        <table class="table align-items-center">
+          <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Bank</th>
+            <th scope="col">Default Payment Method</th>
+            <th scope="col">Remove</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let acc of accounts; let i = index">
+            <th scope="row">
+              {{acc.name}}
+            </th>
+            <td>
+              {{acc.bankName}}
+            </td>
+            <td>
+              <div class="custom-control custom-radio">
+                <input id="{{'radio' + i}}"
+                       name="payment-default"
+                       type="radio"
+                       class="custom-control-input"
+                       [attr.checked]="acc.isDefault ? 'checked' : null"
+                       (change)="onDefaultAccountChange(acc.id)">
+                <label class="custom-control-label" for="{{'radio' + i}}"></label>
+              </div>
+            </td>
+            <td>
+              <button type="button" class="btn btn-sm btn-danger" [disabled]="acc[disableBtnProp]" (click)="deleteAccount(acc.id)">
+                <i class="icon-squared-cross"></i> Remove
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <a class="btn btn-success" routerLink="add">Add new account</a>
+      </form>
+    </div>
+    <!--end of col-->
+  </div>
+  <!--end of row-->
+</div>

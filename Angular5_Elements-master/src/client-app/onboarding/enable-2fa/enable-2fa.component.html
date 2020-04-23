@@ -1,0 +1,54 @@
+<div id="second">
+    <div class="row">
+        <div class="col-6 d-none d-md-block"></div>
+
+        <div *ngIf="step === 1" class="col" [formGroup]="addPhoneForm">
+            <div class="mb-4">
+                <h5>Enable <abbr title="Two-Factor Authentication">2FA</abbr></h5>
+                <p>To keep your account secure, the Elements application requires a 2-factor authentication if you are accessing the site from out of the office. We use <a href="#">Authy</a> to achieve this - it's a free download from the <a href="https://play.google.com/store/apps/details?id=com.authy.authy">Google Play Store</a>                    or <a href="https://itunes.apple.com/us/app/authy/id494168017">Apple App Store</a>. To enable Authy 2FA, simply enter your mobile phone below.</p>
+            </div>
+
+            <div class="form-group">
+                <select class="custom-select form-control-lg" formControlName="countryCode">
+                    <option *ngFor="let country of countries" [value]="country.isdCode">
+                        {{ country.countryName }} (+{{ country.isdCode}})
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col">
+                    <label class="sr-only">Phone Number</label>
+                    <input type="tel" class="form-control form-control-lg" placeholder="Phone Number" formControlName="number" />
+                </div>
+
+                <div class="form-group col">
+                    <button class="btn btn-block btn-lg btn-primary" (click)="setPhone()" [disabled]="addPhoneForm.invalid">Add Your Mobile</button>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="step === 2" class="col" [formGroup]="verifyPhoneForm">
+            <div class="mb-4">
+                <h5>Enable <abbr title="Two-Factor Authentication">2FA</abbr></h5>
+                <p>To keep your account secure, the Elements application requires a 2-factor authentication if you are accessing the site from out of the office. We use <a href="#">Authy</a> to achieve this - it's a free download from the <a href="https://play.google.com/store/apps/details?id=com.authy.authy">Google Play Store</a>                    or <a href="https://itunes.apple.com/us/app/authy/id494168017">Apple App Store</a>. To enable Authy 2FA, simply enter your mobile phone below.</p>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col">
+                    <label class="sr-only">Phone Number</label>
+                    <input type="tel" class="form-control form-control-lg" placeholder="Phone Number" formControlName="number" />
+                </div>
+
+                <div class="form-group col">
+                    <label class="sr-only">Phone Number</label>
+                    <input type="tel" class="form-control form-control-lg" placeholder="Verification Code" formControlName="code" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-block btn-lg btn-primary" (click)="onVerifyPhone()" [disabled]="verifyPhoneForm.invalid">Add Your Mobile</button>
+            </div>
+        </div>
+    </div>
+</div>

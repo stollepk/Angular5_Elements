@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-md-6">
+        <mat-card class="historical-panel-data">
+            <mat-card-header>
+                <mat-card-title style="font-size: 20px;">Historical Data</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <app-order-history-chart-widget></app-order-history-chart-widget>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="col-md-6">
+        <mat-card class="historical-panel-trades">
+            <mat-card-header>
+                <mat-card-title style="font-size: 20px;">Recent Trades</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="recent-trades">
+                    <div class="trade-item">
+                        <span class="qty-header">Quantity</span>
+                        <span class="price-header">Price</span>
+                        <span class="time-header">Time</span>
+                    </div>
+                    <div class="trade-item animated fadeIn" *ngFor="let trade of trades">
+                        <span class="quantity">{{trade.quantity | number:"1.6-6"}} BTC</span>
+                        <span class="price" [class.buy]="trade.isBuy" [class.sell]="!trade.isBuy">$ {{trade.price | number:"1.2-2"}}</span>
+                        <span class="time">{{trade.timestamp | date:"hh:mm:ss"}}</span>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

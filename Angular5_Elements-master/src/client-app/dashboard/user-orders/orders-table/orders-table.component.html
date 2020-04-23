@@ -1,0 +1,49 @@
+<div class="no-data" *ngIf="dataSource.data.length === 0">No data available</div>
+<mat-table *ngIf="dataSource.data.length > 0" [dataSource]="dataSource">
+  <ng-container matColumnDef="symbol">
+    <mat-header-cell *matHeaderCellDef>Symbol</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.symbol}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="orderType">
+    <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <span [style.color]="element.orderType === 1 ? 'red' : 'green'">
+        {{orderTypeEnum[element.orderType]}}
+      </span>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="orderClass">
+    <mat-header-cell *matHeaderCellDef>Class</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{orderClassEnum[element.orderClass]}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{orderStatusEnum[element.status]}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="createdAt">
+    <mat-header-cell *matHeaderCellDef>Created</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.createdAt | date:"dd-MM-yyyy hh:mm:ss"}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="quantity">
+    <mat-header-cell *matHeaderCellDef>Quantity</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.quantity | number:"1.6-6"}} BTC</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="filled">
+    <mat-header-cell *matHeaderCellDef>Filled</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{(element.filledQuantity / element.quantity * 100) | number:"1.0-0"}} %</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <mat-header-cell *matHeaderCellDef>Price</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.price > 0 ? (element.price | number:"1.2-2") + ' $' : ''}}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row class="animated fadeIn" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

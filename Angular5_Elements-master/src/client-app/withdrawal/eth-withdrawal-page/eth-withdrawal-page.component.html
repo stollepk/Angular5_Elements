@@ -1,0 +1,81 @@
+<div class="tab-pane fade show active" id="bank-transfer" role="tabpanel" aria-labelledby="bank-transfer">
+  <div class="container">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between">
+        <div><span class="h6">Withdraw Ethereum</span></div>
+
+        <div class="card-body" [formGroup]="form">
+          <div class="row">
+            <div class="col-6 d-none d-md-block"></div>
+
+            <div class="col">
+              <div class="mb-4">
+              </div>
+
+              <div class="form-group">
+                <label class="">Ethereum address</label>
+
+                <input type="text" class="form-control form-control-lg" formControlName="address" />
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col">
+                  <label for="price" class="sr-only">Amount</label>
+
+                  <div class="input-group">
+                    <input class="form-control form-control-lg"
+                           type="number"
+                           name="price"
+                           id="price"
+                           formControlName="amount"
+                           placeholder="0.00">
+
+                    <div class="input-group-append"><span class="input-group-text">ETH</span></div>
+                  </div>
+                </div>
+
+                <div class="form-group col">
+                  <button class="btn btn-primary btn-lg btn-block"
+                          [disabled]="form.invalid"
+                          (click)="createOrder()">
+                    Initiate Transfer
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3>Withdrawal orders</h3>
+
+      <hr class="short">
+
+      <table class="table table-hover align-items-center table-borderless table-responsive-sm">
+        <thead>
+        <tr>
+          <th scope="col">Address</th>
+          <th>Amount</th>
+          <th scope="col">Date Created</th>
+          <th scope="col" class="">Status</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <ng-template ngFor let-order [ngForOf]="orders$ | async">
+          <tr class="bg-white">
+            <th>{{order.address}}</th>
+
+            <td>ETH {{order.amount | number:"1.2-2"}}</td>
+
+            <td>{{order.createdDate | date:"dd-MMMM-yyyy hh:mm"}}</td>
+
+            <td><span class="badge badge-info badge-pill">{{orderStatuses[order.status]}}</span></td>
+          </tr>
+
+          <tr class="table-divider"></tr>
+        </ng-template>
+        </tbody>
+      </table>
+    </div>
+  </div>

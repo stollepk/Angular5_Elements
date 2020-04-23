@@ -1,0 +1,112 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "project": {
+        "name": "ele-frontend"
+    },
+    "apps": [{
+            "root": "src",
+            "name": "client-app",
+            "appRoot": "client-app",
+            "outDir": "dist/client-app",
+            "assets": [
+                "assets",
+                "favicon.ico"
+            ],
+            "index": "index.html",
+            "main": "client-app-main.ts",
+            "polyfills": "polyfills.ts",
+            "test": "test.ts",
+            "tsconfig": "tsconfig.app.json",
+            "testTsconfig": "tsconfig.spec.json",
+            "prefix": "app",
+            "styles": [
+                "styles/core.scss",
+                "../node_modules/socicon/css/socicon.css"
+            ],
+            "stylePreprocessorOptions": {
+                "includePaths": [
+                    "./styles"
+                ]
+            },
+            "scripts": [
+                "scripts/font-awesome.js",
+                "../node_modules/echarts/dist/echarts.min.js"
+            ],
+            "environmentSource": "environments/environment.ts",
+            "environments": {
+                "dev": "environments/environment.ts",
+                "staging": "environments/environment.staging.ts",
+                "janno": "environments/environment.janno.ts",
+                "max": "environments/environment.max.ts",
+                "prod": "environments/environment.prod.ts"
+            }
+        },
+        {
+            "root": "src",
+            "name": "back-office-app",
+            "appRoot": "back-office-app",
+            "outDir": "dist/back-office-app",
+            "assets": [
+                "assets",
+                "favicon.ico"
+            ],
+            "index": "index.html",
+            "main": "back-office-app-main.ts",
+            "polyfills": "polyfills.ts",
+            "test": "test.ts",
+            "tsconfig": "tsconfig.app.json",
+            "testTsconfig": "tsconfig.spec.json",
+            "prefix": "app",
+            "styles": [
+                "styles/backoffice-core.scss",
+                "../node_modules/socicon/css/socicon.css",
+                "assets/css/entypo-min.css"
+            ],
+            "stylePreprocessorOptions": {
+                "includePaths": [
+                    "./styles"
+                ]
+            },
+            "scripts": [
+                "scripts/font-awesome.js",
+                "../node_modules/echarts/dist/echarts.min.js"
+            ],
+            "environmentSource": "environments/environment.ts",
+            "environments": {
+                "dev": "environments/environment.ts",
+                "staging": "environments/environment.staging.ts",
+                "janno": "environments/environment.janno.ts",
+                "prod": "environments/environment.prod.ts"
+            }
+        }
+    ],
+    "e2e": {
+        "protractor": {
+            "config": "./protractor.conf.js"
+        }
+    },
+    "lint": [{
+            "project": "src/tsconfig.app.json",
+            "exclude": "**/node_modules/**"
+        },
+        {
+            "project": "src/tsconfig.spec.json",
+            "exclude": "**/node_modules/**"
+        },
+        {
+            "project": "e2e/tsconfig.e2e.json",
+            "exclude": "**/node_modules/**"
+        }
+    ],
+    "test": {
+        "karma": {
+            "config": "./karma.conf.js"
+        }
+    },
+    "defaults": {
+        "styleExt": "scss",
+        "component": {
+            "changeDetection": "OnPush"
+        }
+    }
+}

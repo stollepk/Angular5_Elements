@@ -1,0 +1,23 @@
+.dropdown-toggle:hover {
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  position: absolute;
+  display: block;
+  opacity: 0;
+  transition: .2s all ease-in;
+}
+
+.dropdown.open .dropdown-menu {
+  opacity: 1;
+}
+
+.dropdown-item {
+  color: #495057 !important;
+  cursor: pointer;
+}
+
+.settings-dropdown {
+  font-size: 2em;
+}

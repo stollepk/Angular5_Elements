@@ -1,0 +1,235 @@
+// 
+// 
+// user.scss
+//
+// Place your own custom CSS or SCSS rules below this line, these rules will override any Bootstrap and theme variables.
+
+
+.bg-gradient{
+  background: linear-gradient(135deg, $blue 0%,$electric-blue 100%);
+}
+
+.bg-secondary{
+  background: $gray-100 !important;
+}
+
+.footer-long {
+	.list-inline-item{
+	  a{
+	    color: $gray-500;
+	    transition: color .2s ease;
+	    &:hover{
+	      color: $body-color;
+	    }
+	  }
+	}
+}
+
+
+// Spark line
+
+
+.SparkLine__line {
+    fill: none;
+    stroke-width: 1px
+}
+
+.SparkLine__line_positive {
+    stroke: #35a947
+}
+
+.SparkLine__line_negative {
+    stroke: #e34828
+}
+
+.SparkLine__area_positive {
+    fill: url("#slPositiveGradient")
+}
+
+.SparkLine__area_negative {
+    fill: url("#slNegativeGradient")
+}
+
+
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.animated.infinite {
+  animation-iteration-count: infinite;
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.zoomIn {
+  animation-name: zoomIn;
+}
+
+.transition-500 {
+	-webkit-transition: all .5s ease;
+	-moz-transition: all .5s ease;
+	transition: all .5s ease;
+}
+
+.transition-2000 {
+	-webkit-transition: all 2s ease;
+	-moz-transition: all 2s ease;
+	transition: all 2s ease;
+}
+
+.transition-300 {
+	-webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	transition: all .3s ease;
+}
+
+
+.error-page.bg-primary h1 {
+	color: #fff;
+	margin-bottom: 32px;
+}
+
+.error-page .jumbo {
+	font-size: 160px;
+	line-height: 160px;
+	font-weight: 600;
+	margin-bottom: 16px !important;
+}
+
+.error-page i {
+	display: inline-block;
+	font-size: 80px;
+	margin-bottom: 24px; 
+/*	.transition-300; .spin-me;*/
+}
+
+/*.error-page .btn-text-only:hover {
+	color: @color-heading;
+}*/
+
+.spin-me {
+	-webkit-animation: spin 6s ease-in-out infinite alternate;
+	-moz-animation: spin 6s ease-in-out infinite alternate;
+	-o-animation: spin 6s ease-in-out infinite alternate;
+	animation: spin 6s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes spin {
+0% {
+	-webkit-transform: rotate(-15deg);
+}
+
+10% {
+	-webkit-transform: rotate(-85deg);
+}
+
+30% {
+	-webkit-transform: rotate(5deg);
+}
+
+50% {
+	-webkit-transform: rotate(250deg);
+}
+
+100% {
+	-webkit-transform: rotate(0deg);
+}
+}
+
+@-moz-keyframes spin {
+0% {
+	-moz-transform: rotate(-15deg);
+}
+
+10% {
+	-moz-transform: rotate(-85deg);
+}
+
+30% {
+	-moz-transform: rotate(5deg);
+}
+
+50% {
+	-moz-transform: rotate(250deg);
+}
+
+100% {
+	-moz-transform: rotate(0deg);
+}
+}
+
+@-o-keyframes spin {
+0% {
+	-o-transform: rotate(-15deg);
+}
+
+10% {
+	-o-transform: rotate(-85deg);
+}
+
+30% {
+	-o-transform: rotate(5deg);
+}
+
+50% {
+	-o-transform: rotate(250deg);
+}
+
+100% {
+	-o-transform: rotate(0deg);
+}
+}
+
+@-ms-keyframes spin {
+0% {
+	-ms-transform: rotate(-15deg);
+}
+
+10% {
+	-ms-transform: rotate(-85deg);
+}
+
+30% {
+	-ms-transform: rotate(5deg);
+}
+
+50% {
+	-ms-transform: rotate(250deg);
+}
+
+100% {
+	-ms-transform: rotate(0deg);
+}
+}
+
+@keyframes spin {
+0% {
+	transform: rotate(-15deg);
+}
+
+10% {
+	transform: rotate(-85deg);
+}
+
+30% {
+	transform: rotate(5deg);
+}
+
+50% {
+	transform: rotate(250deg);
+}
+
+100% {
+	transform: rotate(0deg);
+}
+}

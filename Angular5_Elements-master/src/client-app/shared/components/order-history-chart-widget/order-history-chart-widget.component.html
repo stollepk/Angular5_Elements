@@ -1,0 +1,65 @@
+<!--<div class="row historical-widget-subpanel-row">-->
+    <!--<div class="col-md-4">-->
+        <!--<span class="historical-widget-subpanel-title">Last Price</span>-->
+        <!--<span class="historical-widget-subpanel-price">${{lastPrice}}</span>-->
+    <!--</div>-->
+    <!--<div class="col-md-4">-->
+        <!--<span class="historical-widget-subpanel-title">24-Hour Change</span>-->
+        <!--<span class="historical-widget-subpanel-price">${{priceRange.min - priceRange.max}}</span>-->
+    <!--</div>-->
+    <!--<div class="col-md-4 history-chart-widget-last-col">-->
+        <!--<span class="historical-widget-subpanel-title">Order Book Display</span>-->
+        <!--<span class="historical-widget-subpanel-tool"><mat-icon>show_chart</mat-icon> Chart: Zoom</span>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<mat-divider></mat-divider>-->
+<!--<div class="row historical-widget-subpanel-row">-->
+    <!--<div class="col-md-8">-->
+        <!--<span class="historical-widget-subpanel-title">24-Hour Range</span>-->
+        <!--<span class="historical-widget-subpanel-price">${{priceRange.min}} ~ ${{priceRange.max}}</span>-->
+    <!--</div>-->
+    <!--<div class="col-md-4 history-chart-widget-last-col">-->
+        <!--<span class="historical-widget-subpanel-title">Refresh</span>-->
+        <!--<span class="historical-widget-subpanel-tool"><mat-icon>query_builder</mat-icon> 5 seconds</span>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<mat-divider></mat-divider>-->
+<div class="card-header d-flex justify-content-between">
+  <div class="row text-center">
+    <div class="col-12 col-sm-4"><span class="title-decorative text-dark m-0">Bid-Ask</span>
+      <small class="title-decorative">${{spread.bestBid}} – ${{spread.bestAsk}}</small></div>
+    <!--end of col-->
+    <div class="col-12 col-sm-4"><span class="title-decorative text-dark m-0">Last Price</span>
+      <small class="title-decorative">${{lastPrice}}</small></div>
+    <!--end of col-->
+    <div class="col-12 col-sm-4"><span class="title-decorative text-dark m-0">24-Hour Range</span>
+      <small class="title-decorative">${{priceRange.min}} – ${{priceRange.max}}</small></div>
+    <!--end of col-->
+    <div class="col-12 col-sm-4"><span class="title-decorative text-dark m-0">24hr Change</span>
+      <small class="title-decorative" [class.text-red]="!isGrow" [class.text-green]="isGrow">
+        <span class="stack-down-dir">{{isGrow ? '▲' : '▼'}}</span>
+        ${{priceDiff}} ({{priceDiffPercentage}}%)
+      </small>
+    </div>
+    <!--end of col-->
+  </div>
+</div>
+<div class="card-body">
+  <div echarts [options]="tradesChartsOption" theme="light" class="demo-chart"></div>
+</div>
+<div class="card-footer d-none d-lg-block">
+  <!--<div class="row text-center">-->
+  <!--<div class="col-12 col-sm-4"><span class="title-decorative text-dark m-0">Bid-Ask</span>-->
+  <!--<small class="title-decorative">$6,733.10 – $6,733.11</small></div>-->
+  <!--&lt;!&ndash;end of col&ndash;&gt;-->
+  <!--<div class="col-12 col-sm-4"><span class="title-decorative text-dark m-0">Last Price</span>-->
+  <!--<small class="title-decorative">$6,733.10</small></div>-->
+  <!--&lt;!&ndash;end of col&ndash;&gt;-->
+  <!--<div class="col-12 col-sm-4"><span class="title-decorative text-dark m-0">24-Hour Range</span>-->
+  <!--<small class="title-decorative">$6,612.35 – $7,176.99</small></div>-->
+  <!--&lt;!&ndash;end of col&ndash;&gt;-->
+  <!--<div class="col-12 col-sm-4"><span class="title-decorative text-dark m-0">24hr Change</span>-->
+  <!--<small class="title-decorative text-red"><span class="stack-down-dir">▾</span> $391.84 (-5.50%) </small></div>-->
+  <!--&lt;!&ndash;end of col&ndash;&gt;-->
+  <!--</div>-->
+</div>

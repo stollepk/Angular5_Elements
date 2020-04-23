@@ -1,0 +1,49 @@
+<app-header></app-header>
+
+<div class="main-container">
+    <section class="bg-gradient text-light p-0">
+        <img src="assets/img/guilloche-1.svg" class="bg-image opacity-10" />
+
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-12 col-md-7">
+                    <div class="space-lg text-center text-md-left">
+                        <h1>Welcome to Elements</h1>
+                    </div>
+                </div>
+                <!--end of row-->
+            </div>
+        </div>
+        <!--end of container-->
+    </section>
+</div>
+
+<div class="wizard" id="onboarding-wizard">
+
+    <section class="bg-white">
+        <div class="container">
+            <div class="bg-white" id="wizard-tabs">
+                <mat-horizontal-stepper linear #stepper class="disabled-header">
+                    <mat-step  [editable]="false" [completed]="currentStep > 0">
+                        <app-email-verify (verifyClientEmail)="toNextStep($event)"></app-email-verify>
+                    </mat-step>
+                    <mat-step  [editable]="false" [completed]="currentStep > 1">
+                        <app-enable-2fa (verifyPhone)="toNextStep($event)"></app-enable-2fa>
+                    </mat-step>
+                    <mat-step  [editable]="false" [completed]="currentStep > 2">
+                        <app-identity (verifyIdentity)="toNextStep($event)"></app-identity>
+                    </mat-step>
+                    <mat-step>
+                        <app-add-bank (verifyBank)="toNextStep($event)"></app-add-bank>
+                    </mat-step>
+                    <mat-step>
+                        <app-upload-documents (startCheck)="toNextStep($event)"></app-upload-documents>
+                    </mat-step>
+                </mat-horizontal-stepper>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<app-footer></app-footer>

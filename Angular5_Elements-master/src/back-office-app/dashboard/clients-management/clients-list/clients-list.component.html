@@ -1,0 +1,87 @@
+<app-header></app-header>
+<div class="main-container">
+  <section class="bg-white space-sm pb-4">
+    <div class="container">
+      <div class="row justify-content-between align-items-center">
+        <div class="col-auto">
+          <h1 class="h2">Onboarding Management</h1>
+        </div>
+        <!--end of col-->
+      </div>
+      <!--end of row-->
+    </div>
+    <!--end of container-->
+  </section>
+
+  <section class="">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+              <span class="text-muted text-small">Results 1 - {{clients ? clients.length : "0"}} of {{clientsCount}}</span>
+            </div>
+            <form class="d-flex align-items-center" [formGroup]="form">
+              <span class="mr-2 text-muted text-small text-nowrap">Sort by:</span>
+              <select class="custom-select" formControlName="sortBy" (change)="findClients()">
+                <option value="old-new" *ngFor="let sortBy of sortByList" [value]="sortBy.key">{{sortBy.value}}</option>
+              </select>
+            </form>
+          </div>
+        </div>
+        <!--end of col-->
+      </div>
+
+      <table class="table table-hover align-items-center table-borderless">
+        <thead>
+        <tr>
+          <th scope="col">User ID</th>
+
+          <th scope="col">Date</th>
+
+          <th scope="col">Type</th>
+
+          <th scope="col">Name</th>
+
+          <th scope="col">Status</th>
+
+          <th scope="col">Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <ng-template ngFor let-client [ngForOf]="clients">
+        <tr class="bg-white">
+          <th>{{client.id}}</th>
+
+          <td>{{client.registerDate | date:"d MMM, y HH:mm"}}</td>
+
+          <td>Individual</td>
+
+          <td>{{client.fullName}}</td>
+
+          <td><span class="badge badge-pill" [ngClass]="getStatusClass(client.accountVerificationStatus)">
+            {{client.accountVerificationStatus | clientVerificationStatus}}
+          </span></td>
+
+          <td>
+            <div class="dropdown">
+              <button class="btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow" type="button" id="dropdownMenuButton-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-dots-three-horizontal"></i></button>
+
+              <div class="dropdown-menu dropdown-menu-sm" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" [routerLink]="client.id">Review</a>
+
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item">Contact Client</a></div>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="table-divider"></tr>
+        </ng-template>
+        </tbody>
+      </table>
+
+    </div>
+  </section>
+</div>

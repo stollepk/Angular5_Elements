@@ -1,0 +1,52 @@
+<h2 mat-dialog-title>{{orderTypeName}} dialog</h2>
+<mat-dialog-content>
+  <div class="row">
+    <div class="col-md-8 order-dialog-content">
+      <app-order-history-chart-widget></app-order-history-chart-widget>
+    </div>
+    <div class="col-md-4 order-dialog-content order-dialog-form">
+      <div class="dialog-content" [formGroup]="form">
+        <div class="wrapper">
+
+          <mat-form-field>
+            <mat-select placeholder="CURRENCY PAIR" formControlName="symbol">
+              <mat-option value="BTC_USD" default>BTC USD</mat-option>
+              <mat-option value="ETH_USD">ETH USD</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <app-order-class-selector formControlName="orderClass"></app-order-class-selector>
+          <mat-form-field>
+            <input matInput type="number" placeholder="QUANTITY" formControlName="quantity">
+            <span matSuffix>BTC</span>
+          </mat-form-field>
+          <mat-form-field *ngIf="this.form.get('price')">
+            <input matInput type="number" placeholder="PRICE" formControlName="price">
+            <span matSuffix>USD</span>
+          </mat-form-field>
+          <mat-form-field *ngIf="this.form.get('price')">
+            <input matInput type="number" placeholder="TOTAL" value="{{total}}" disabled>
+            <span matSuffix>USD</span>
+          </mat-form-field>
+          <div *ngIf="this.form.get('price')">
+
+            <mat-divider class="divider-form"></mat-divider>
+            <div class="row final-order-row">
+              <div class="col-md-6 final-order-title">Order</div>
+              <div class="col-md-6 final-order-value">${{ order(total) }}</div>
+
+              <div class="col-md-6 final-order-title">Fee</div>
+              <div class="col-md-6 final-order-value">{{ fee }}</div>
+            </div>
+            <mat-divider class="divider-button"></mat-divider>
+            <div class="row final-total-row final-order-row">
+              <div class="col-md-6 final-order-title">Total</div>
+              <div class="col-md-6 final-order-value">${{ total }}</div>
+            </div>
+          </div>
+          <button mat-raised-button color="primary" (click)="submit()">{{orderTypeName}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</mat-dialog-content>

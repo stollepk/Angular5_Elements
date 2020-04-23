@@ -1,0 +1,83 @@
+<div id="fourth" *ngIf="form">
+    <div class="row">
+        <div *ngIf="onboardingMode" class="col-6 d-none d-md-block"></div>
+
+        <div class="col" [formGroup]="form">
+            <h5>Add a Bank Account</h5>
+
+            <p>Link your bank account to your Elements account to transfer Fiat into and out of exchange. You can verify your bank account by initiating a wire transfer to Elements.</p>
+
+          <div class="form-group" *ngIf="!onboardingMode">
+            <label>Account name</label>
+
+            <input class="form-control form-control-lg"
+                   type="text"
+                   data-toggle="tooltip"
+                   data-placement="top"
+                   formControlName="name">
+          </div>
+
+            <div class="form-group">
+                <label>Bank Account Holder Name</label>
+
+                <input class="form-control form-control-lg"
+                       type="text" data-toggle="tooltip"
+                       data-placement="top"
+                       title="We do not accept third-party bank accounts. The bank account must be in the account holder name."
+                       formControlName="accountHolder"
+                       readonly>
+            </div>
+
+            <div class="form-group">
+                <label>Bank Name</label>
+
+                <input class="form-control form-control-lg"
+                       placeholder="Start typing bank name here..."
+                       #bankInput
+                       [ngbTypeahead]="searchBanks"
+                       [resultFormatter]="bankDisplayFn"
+                       [inputFormatter]="bankDisplayFn"
+                       (selectItem)="onBankSelect($event)"/>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col">
+                    <label>SWIFT Code</label>
+
+                    <select class="form-control form-control-lg" formControlName="swiftCode">
+                      <option *ngFor="let code of swiftCodes" [value]="code">{{code}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group col">
+                    <label>Country</label>
+
+                    <select class="custom-select form-control-lg" formControlName="countryId" (change)="onCountryChange($event)">
+                        <option *ngFor="let country of countries" [value]=country.id>{{ country.countryName }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col">
+                    <label>National Routing Code <i>(if any)</i></label>
+
+                    <input class="form-control form-control-lg" formControlName="clearingCode" />
+                </div>
+
+                <div class="form-group col">
+                    <label>Bank Account Number</label>
+
+                    <input class="form-control form-control-lg" formControlName="accountNumber" />
+                </div>
+            </div>
+
+            <button type="submit"
+                    class="btn btn-block btn-lg btn-primary"
+                    [disabled]="this.form.invalid"
+                    (click)="addBankAccount()">
+              Add Your Bank Account
+            </button>
+            <button *ngIf="onboardingMode" class="btn btn-block btn-lg btn-secondary" (click)="onVerifyBank()">Do This Later</button></div>
+    </div>
+</div>

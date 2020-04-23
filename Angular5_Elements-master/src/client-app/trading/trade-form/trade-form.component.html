@@ -1,0 +1,111 @@
+<div class="row card flex-row card-lg box-shadow zoomIn card-borderless">
+  <div class="col-8">
+    <!--<div class="card-header d-flex justify-content-between">-->
+      <!--<div class="row text-center">-->
+        <!--<div class="col-12 col-sm-4"><span class="title-decorative text-dark m-0">Bid-Ask</span>-->
+          <!--<small class="title-decorative">$6,733.10 – $6,733.11</small></div>-->
+        <!--&lt;!&ndash;end of col&ndash;&gt;-->
+        <!--<div class="col-12 col-sm-4"><span class="title-decorative text-dark m-0">Last Price</span>-->
+          <!--<small class="title-decorative">$6,733.10</small></div>-->
+        <!--&lt;!&ndash;end of col&ndash;&gt;-->
+        <!--<div class="col-12 col-sm-4"><span class="title-decorative text-dark m-0">24-Hour Range</span>-->
+          <!--<small class="title-decorative">$6,612.35 – $7,176.99</small></div>-->
+        <!--&lt;!&ndash;end of col&ndash;&gt;-->
+        <!--<div class="col-12 col-sm-4"><span class="title-decorative text-dark m-0">24hr Change</span>-->
+          <!--<small class="title-decorative text-red"><span class="stack-down-dir">▾</span> $391.84 (-5.50%) </small></div>-->
+        <!--&lt;!&ndash;end of col&ndash;&gt;-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <app-order-history-chart-widget></app-order-history-chart-widget>
+  </div>
+
+  <div class="col-auto">
+    <div class="card-body" [formGroup]="form">
+      <select class="custom-select" formControlName="symbol" (change)="onSymbolChange($event)">
+        <option value="BTC_USD">BTC/USD</option>
+        <option value="ETH_USD" selected="">ETH/USD</option>
+      </select>
+      <div class="mb-4" style="margin-top: 30px">
+        <div class="form-group">
+          <label>Order type</label>
+          <select class="custom-select" formControlName="orderType">
+            <option value="1">Buy</option>
+            <option value="2">Sell</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Order class</label>
+          <select class="custom-select" formControlName="orderClass">
+            <option value="1">Market</option>
+            <option value="2">Limit</option>
+          </select>
+        </div>
+
+        <div class="form-group" *ngIf="isPriceVisible">
+          <label for="price">Price</label>
+          <div class="input-group">
+            <input class="form-control" type="number" name="price" id="price" formControlName="price">
+            <div class="input-group-append">
+              <span class="input-group-text">{{quoteAsset}}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="quantity">Quantity</label>
+          <div class="input-group">
+            <input class="form-control" type="number" name="quantity" id="quantity" formControlName="quantity">
+            <div class="input-group-append">
+              <span class="input-group-text">{{baseAsset}}</span>
+            </div>
+          </div>
+        </div>
+
+        <!--<div class="form-group" *ngIf="isPriceVisible">-->
+          <!--<label for="total">Total</label>-->
+          <!--<div class="input-group">-->
+            <!--<input class="form-control" type="number" name="total" id="total" value="0">-->
+            <!--<div class="input-group-append">  -->
+              <!--<span class="input-group-text">{{quoteAsset}}</span>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+
+        <hr>
+        <div *ngIf="isPriceVisible">
+          <div class=" d-flex justify-content-between lh-condensed text-muted text-small">
+            <div>
+              <span class="my-0 text-muted">Order</span>
+            </div>
+            <span>${{orderPrice | number:"1.2-2"}}</span>
+          </div>
+          <div class=" d-flex justify-content-between lh-condensed text-muted text-small">
+            <div>
+              <span class="my-0 text-muted">Elements Fee</span>
+            </div>
+            <span>${{fee | number:"1.2-2"}}</span>
+          </div>
+          <hr class="mb-1 mt-1">
+          <div class=" d-flex justify-content-between lh-condensed text-muted text-small">
+            <div>
+              <span class="my-0">Total</span>
+            </div>
+            <span>${{totalPrice | number:"1.2-2"}}</span>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <button *ngIf="isBuy"
+                  class="btn btn-lg btn-block btn-success"
+                  (click)="createOrder()"
+                  [disabled]="!isFormValid || isSubmitting">Buy</button>
+          <button *ngIf="isSell"
+                  class="btn btn-lg btn-block btn-danger"
+                  (click)="createOrder()"
+                  [disabled]="!isFormValid || isSubmitting">Sell</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

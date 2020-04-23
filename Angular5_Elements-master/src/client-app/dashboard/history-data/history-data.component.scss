@@ -1,0 +1,38 @@
+$block-padding-top: 20px;
+.recent-trades {
+    flex-grow: 4;
+    display: flex;
+    flex-direction: column;
+    .qty-header,
+    .price-header,
+    .time-header {
+        flex-grow: 1;
+    }
+    .price-header,
+    .time-header {
+        text-align: right;
+    }
+    .trade-item {
+        border-bottom: 1px solid darkgray;
+        display: flex;
+        flex-direction: row;
+        padding: 5px 0;
+        margin-bottom: 5px;
+        .quantity,
+        .price,
+        .time {
+            display: inline-block;
+            flex-grow: 1;
+        }
+        .price,
+        .time {
+            text-align: right;
+        }
+        .buy {
+            color: green;
+        }
+        .sell {
+            color: red;
+        }
+    }
+}
